@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GenericAdventureGame.Renderers;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,18 +12,26 @@ namespace GenericAdventureGame
 	{
 		#region Field
 
-		private Stack<StateObject> States;
+		private ASCIIRenderer renderer;
+		private List<StateObject> states;
+		private int currentStateIndex;
 
 		#endregion
 
 		#region Properties
+
+		public StateObject CurrentState
+		{
+			get { return states[currentStateIndex]; }
+		}
+
 		#endregion
 
 		#region Constructor
 
 		public StateEngine()
 		{
-			States = new Stack<StateObject>();
+			states = new List<StateObject>();
 		}
 
 		#endregion
@@ -34,27 +43,27 @@ namespace GenericAdventureGame
 
 		public void Add(StateObject state)
 		{
-			States.Push(state);
+			states.Add(state);
 		}
 
 		public void Initalize()
 		{
-
+			CurrentState.Initalize();
 		}
 
 		public void LoadContent()
 		{
-
+			CurrentState.LoadContent();
 		}
 
 		public void Update()
 		{
-
+			CurrentState.Update();
 		}
 
 		public void Render()
 		{
-
+			CurrentState.Draw();
 		}
 
 		#endregion

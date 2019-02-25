@@ -13,11 +13,17 @@ namespace GenericAdventureGame
 
 		#region Properties
 
-		public Stack<DrawableObject> Children { get; set; }
+		public List<DrawableObject> Children { get; set; }
 
 		#endregion
 
 		#region Constructor
+
+		public StateObject()
+		{
+			Children = new List<DrawableObject>();
+		}
+
 		#endregion
 
 		#region Event Listeners
@@ -25,24 +31,24 @@ namespace GenericAdventureGame
 
 		#region Methods
 
-		public void Draw()
-		{
-
-		}
-
 		public void Initalize()
 		{
-
+			Children.ForEach(x => x.Initalize());
 		}
 
 		public void LoadContent()
 		{
-
+			Children.ForEach(x => x.LoadContent());
 		}
 
 		public void Update()
 		{
+			Children.ForEach(x => x.Update());
+		}
 
+		public void Draw()
+		{
+			Children.ForEach(x => x.Draw());
 		}
 
 		#endregion

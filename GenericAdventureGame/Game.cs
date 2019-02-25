@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GenericAdventureGame.File_IO;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,29 +7,30 @@ using System.Threading.Tasks;
 
 namespace GenericAdventureGame
 {
-	class Game : DrawableObject
+	class Game
 	{
 		#region Field
 
-		private Stack<DrawableObject> children;
+		//services
+		private ContentManager contentManager;
+		private StateEngine stateEngine;
+		private StateObject mainMenu;
 
 		#endregion
 
 		#region Properties
-
-		public Stack<DrawableObject> Children
-		{
-			get { return children; }
-			set { children = value;	}
-		}
-
 		#endregion
 
 		#region Constructor
 
 		public Game()
 		{
-			children = new Stack<DrawableObject>();
+			contentManager = new ContentManager("M:\\myWorkShop\\C# WorkShop\\GenericAdventureGame\\GameGenData");
+
+			stateEngine = new StateEngine();
+			mainMenu = new StateObject();
+
+			stateEngine.Add(mainMenu);
 
 			Initalize();
 			LoadContent();
@@ -39,7 +41,7 @@ namespace GenericAdventureGame
 				// updates game elements
 				Update();
 				// draws the game graphical game elements to the screen
-				Draw();
+				Render();
 			}
 		}
 
@@ -52,34 +54,22 @@ namespace GenericAdventureGame
 
 		public void Initalize()
 		{
-			foreach (var childObject in children)
-			{
-				childObject.Initalize();
-			}
+			stateEngine.Initalize();
 		}
 
 		public void LoadContent()
 		{
-			foreach (var childObject in children)
-			{
-				childObject.LoadContent();
-			}
+			stateEngine.LoadContent();
 		}
 
 		public void Update()
 		{
-			foreach (var childObject in children)
-			{
-				childObject.Update();
-			}
+			stateEngine.Update();
 		}
 
-		public void Draw()
+		public void Render()
 		{
-			foreach (var childObject in children)
-			{
-				childObject.Draw();
-			}
+			stateEngine.Render();
 		}
 
 		#endregion

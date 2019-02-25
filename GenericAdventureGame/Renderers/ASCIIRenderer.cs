@@ -12,26 +12,26 @@ namespace GenericAdventureGame.Renderers
 
 		Dictionary<int, ScreenElement> ConversionTable = new Dictionary<int, ScreenElement>
 		{
-			{1, new ScreenElement{ // grass
-				Symbol = new char[] {',','.'},
-				BackgroundColor = ConsoleColor.DarkGreen,
-				TextColor = ConsoleColor.Green
+			{0, new ScreenElement{ // ocean
+				Symbol = new char[] {'▓', '▒', '≈'},
+				BackgroundColor = ConsoleColor.DarkBlue,
+				TextColor = ConsoleColor.Blue
 			} },
 
-			{2, new ScreenElement{ // sand
+			{1, new ScreenElement{ // sand
 				Symbol = new char[] {'~', '≈'},
 				BackgroundColor = ConsoleColor.DarkYellow,
 				TextColor = ConsoleColor.Yellow
 			} },
 
-			{3, new ScreenElement{ // ocean
-				Symbol = new char[] {'▓', '▒'},
-				BackgroundColor = ConsoleColor.DarkBlue,
-				TextColor = ConsoleColor.Blue
+			{2, new ScreenElement{ // grass
+				Symbol = new char[] {',','.'},
+				BackgroundColor = ConsoleColor.DarkGreen,
+				TextColor = ConsoleColor.Green
 			} },
 
-			{4, new ScreenElement{ // river
-				Symbol = new char[] {'~', '≈'},
+			{3, new ScreenElement{ // river
+				Symbol = new char[] {'~'},
 				BackgroundColor = ConsoleColor.Blue,
 				TextColor = ConsoleColor.Cyan
 			} },

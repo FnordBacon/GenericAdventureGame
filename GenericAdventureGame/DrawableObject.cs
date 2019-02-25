@@ -8,7 +8,7 @@ namespace GenericAdventureGame
 {
 	interface DrawableObject
 	{
-		Stack<DrawableObject> Children
+		List<DrawableObject> Children
 		{
 			get; set;
 		}
